@@ -782,6 +782,18 @@ body {
 .scrollable::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
 .scrollable::-webkit-scrollbar-thumb:hover { background: var(--border-hover); }
 
+.scrollable-horizontal { 
+  overflow-x: auto; 
+  overflow-y: hidden; 
+  scrollbar-width: thin; 
+  scrollbar-color: var(--border) transparent; 
+  white-space: nowrap;
+}
+.scrollable-horizontal::-webkit-scrollbar { height: 6px; }
+.scrollable-horizontal::-webkit-scrollbar-track { background: transparent; }
+.scrollable-horizontal::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+.scrollable-horizontal::-webkit-scrollbar-thumb:hover { background: var(--border-light); }
+
 /* Glassmorphism Effects */
 .glass { 
   background: rgba(255, 255, 255, 0.1); 

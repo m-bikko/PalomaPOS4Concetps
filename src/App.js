@@ -8,6 +8,7 @@ import ConceptFour from './components/ConceptFour';
 import ConceptFive from './components/ConceptFive';
 import ConceptSix from './components/ConceptSix';
 import ConceptSeven from './components/ConceptSeven';
+import ConceptEight from './components/ConceptEight';
 import { POSProvider } from './hooks/usePOS';
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
           <Route path="/concept5" element={<ConceptFive />} />
           <Route path="/concept6" element={<ConceptSix />} />
           <Route path="/concept7" element={<ConceptSeven />} />
+          <Route path="/concept8" element={<ConceptEight />} />
         </Routes>
       </Router>
     </POSProvider>

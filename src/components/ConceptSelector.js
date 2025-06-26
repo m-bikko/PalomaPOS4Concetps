@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { 
   Layout, Smartphone, BarChart3, Grid, 
   Clock, ArrowRight, Zap, Users, 
-  Layers, Activity, ShoppingCart, TerminalSquare, FolderTree, Sparkles
+  Layers, Activity, ShoppingCart, TerminalSquare, FolderTree, Sparkles, PanelLeft
 } from 'lucide-react';
 
 const ConceptSelector = () => {
@@ -84,6 +84,17 @@ const ConceptSelector = () => {
       gradient: 'from-purple-500/20 to-blue-500/20',
       iconBg: 'bg-purple-500',
       accent: 'text-purple-400'
+    },
+    {
+      id: 'concept8',
+      title: 'Left Panel Focus',
+      subtitle: 'Cart-First Design',
+      description: 'Revolutionary left-panel cart design with glassmorphism aesthetics, real-time order statistics, and modern split-screen workflow.',
+      icon: PanelLeft,
+      features: ['Left-side cart panel', 'Real-time order stats', 'Glassmorphism design', 'Modern split layout'],
+      gradient: 'from-blue-500/20 to-cyan-500/20',
+      iconBg: 'bg-blue-500',
+      accent: 'text-blue-400'
     }
   ];
 
