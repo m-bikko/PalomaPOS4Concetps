@@ -1,0 +1,26 @@
+I need to build UI for POS system just for only 1 page.
+
+Here must be:
+- In the super upward time and text "PalomaPOS 0.3.170.067234687234"
+- 2 different buttons that drops 2 different drop
+- Total cost of all selected products
+- List of all selected products 
+- In each element in the list must have:
+1) Name of product
+2) Number of products
+3) Buttons for adding or substrating the count
+4) Button for edit
+5) Button for discount
+6) Element that shows note added for product
+7) Element that shows added option for product
+8) Total cost
+- Button for Receipt
+- Button for Payment
+- Button for Scan
+- Button/input(can be hidden(on your choise)) for search
+- The product is placed inside of category(You should decide how to make it, should we make the product page poads after going to category button or the category and their products are appearing in one page at the same time)
+- Product should contain its name, price and photo(If Photo is not appearing, it replaces with first letter of product name)
+- Product can be out of stock(stop list), you should display it relevantly
+- Adding breadcrumb if relevant
+
+We need to make it with dark shades of colors, without any gradient. Make it in 4 concept versions with absolutely different UX. Make them all in 4 different routes. Optimize it under 1280x800px resolution. 
