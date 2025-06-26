@@ -1,7 +1,9 @@
-import { useState, useEffect, useMemo } from 'react';
+import React, { createContext, useContext, useState, useEffect, useMemo } from 'react';
 import { categories, products, productOptions, defaultCartItems } from '../data/mockData';
 
-export const usePOS = () => {
+const POSContext = createContext();
+
+export const POSProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState(defaultCartItems);
   const [selectedCategory, setSelectedCategory] = useState(categories[0]?.id || 1);
   const [searchTerm, setSearchTerm] = useState('');
@@ -28,17 +30,17 @@ export const usePOS = () => {
     }
     
     return filtered;
-  }, [selectedCategory, searchTerm]);
+  }, [selectedCategory, searchTerm, products]);
 
   // Get all products for search (when no category filter)
   const allFilteredProducts = useMemo(() => {
-    if (!searchTerm) return [];
+    if (!searchTerm) return products;
     
     return products.filter(product =>
       product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       product.description.toLowerCase().includes(searchTerm.toLowerCase())
     );
-  }, [searchTerm]);
+  }, [searchTerm, products]);
 
   // Calculate cart totals
   const cartTotals = useMemo(() => {
@@ -49,21 +51,22 @@ export const usePOS = () => {
       const product = products.find(p => p.id === cartItem.productId);
       if (!product) return;
 
-      let itemPrice = product.price * cartItem.quantity;
+      let itemPrice = product.price;
       
       // Add options price
       cartItem.selectedOptions.forEach(optionId => {
         const option = productOptions.find(o => o.id === optionId);
         if (option) {
-          itemPrice += option.price * cartItem.quantity;
+          itemPrice += option.price;
         }
       });
 
-      subtotal += itemPrice;
+      const totalItemPrice = itemPrice * cartItem.quantity;
+      subtotal += totalItemPrice;
       
       // Calculate discount
       if (cartItem.discount > 0) {
-        const discountAmount = (itemPrice * cartItem.discount) / 100;
+        const discountAmount = (totalItemPrice * cartItem.discount) / 100;
         totalDiscount += discountAmount;
       }
     });
@@ -76,10 +79,10 @@ export const usePOS = () => {
       total,
       itemCount: cartItems.reduce((sum, item) => sum + item.quantity, 0)
     };
-  }, [cartItems]);
+  }, [cartItems, products, productOptions]);
 
   // Add product to cart
-  const addToCart = (productId, options = [], note = '') => {
+  const addToCart = (productId, quantity = 1, options = [], note = '') => {
     const existingItemIndex = cartItems.findIndex(item => 
       item.productId === productId && 
       JSON.stringify(item.selectedOptions.sort()) === JSON.stringify(options.sort()) &&
@@ -88,13 +91,13 @@ export const usePOS = () => {
 
     if (existingItemIndex >= 0) {
       const updatedCart = [...cartItems];
-      updatedCart[existingItemIndex].quantity += 1;
+      updatedCart[existingItemIndex].quantity += quantity;
       setCartItems(updatedCart);
     } else {
       const newItem = {
         id: Date.now(),
         productId,
-        quantity: 1,
+        quantity,
         selectedOptions: options,
         note,
         discount: 0
@@ -148,7 +151,7 @@ export const usePOS = () => {
 
   // Get cart item details
   const getCartItemDetails = (cartItem) => {
-    const { product } = getProductDetails(cartItem.productId);
+    const product = products.find(p => p.id === cartItem.productId);
     if (!product) return null;
 
     const selectedOptionDetails = cartItem.selectedOptions.map(optionId =>
@@ -193,8 +196,11 @@ export const usePOS = () => {
     });
   };
 
-  return {
-    // Data
+  const getProductById = (productId) => {
+    return products.find(p => p.id === productId);
+  };
+
+  const value = {
     categories,
     products,
     productOptions,
@@ -203,12 +209,8 @@ export const usePOS = () => {
     allFilteredProducts,
     cartTotals,
     currentTime,
-    
-    // State
     selectedCategory,
     searchTerm,
-    
-    // Actions
     setSelectedCategory,
     setSearchTerm,
     addToCart,
@@ -217,11 +219,24 @@ export const usePOS = () => {
     updateNote,
     updateDiscount,
     clearCart,
-    
-    // Helpers
     getProductDetails,
     getCartItemDetails,
     formatCurrency,
-    formatTime
+    formatTime,
+    getProductById,
   };
+
+  return (
+    <POSContext.Provider value={value}>
+      {children}
+    </POSContext.Provider>
+  );
+};
+
+export const usePOS = () => {
+  const context = useContext(POSContext);
+  if (context === undefined) {
+    throw new Error('usePOS must be used within a POSProvider');
+  }
+  return context;
 }; 

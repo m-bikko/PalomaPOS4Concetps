@@ -1,25 +1,31 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import ConceptSelector from './components/ConceptSelector';
 import ConceptOne from './components/ConceptOne';
 import ConceptTwo from './components/ConceptTwo';
 import ConceptThree from './components/ConceptThree';
 import ConceptFour from './components/ConceptFour';
-import ConceptSelector from './components/ConceptSelector';
+import ConceptFive from './components/ConceptFive';
+import ConceptSix from './components/ConceptSix';
+import ConceptSeven from './components/ConceptSeven';
+import { POSProvider } from './hooks/usePOS';
 
 function App() {
   return (
-    <Router>
-      <div className="container">
+    <POSProvider>
+      <Router>
         <Routes>
           <Route path="/" element={<ConceptSelector />} />
           <Route path="/concept1" element={<ConceptOne />} />
           <Route path="/concept2" element={<ConceptTwo />} />
           <Route path="/concept3" element={<ConceptThree />} />
           <Route path="/concept4" element={<ConceptFour />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
+          <Route path="/concept5" element={<ConceptFive />} />
+          <Route path="/concept6" element={<ConceptSix />} />
+          <Route path="/concept7" element={<ConceptSeven />} />
         </Routes>
-      </div>
-    </Router>
+      </Router>
+    </POSProvider>
   );
 }
 

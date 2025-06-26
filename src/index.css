@@ -543,6 +543,21 @@ body {
   to { transform: translateX(0); }
 }
 
+@keyframes slideInRight {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-20px) scale(1.05); }
+}
+
+@keyframes floatDelayed {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(20px) scale(1.05); }
+}
+
 @keyframes pulse {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.7; }
@@ -554,6 +569,19 @@ body {
 
 .animate-slide-in {
   animation: slideIn 0.3s ease;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.3s ease;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: floatDelayed 6s ease-in-out infinite;
+  animation-delay: -3s;
 }
 
 .animate-pulse {
@@ -735,4 +763,96 @@ body {
 .text-accent { color: var(--accent-primary); }
 .text-success { color: var(--success); }
 .text-warning { color: var(--warning); }
-.text-danger { color: var(--danger); } 
+.text-danger { color: var(--danger); }
+
+/* Utility Classes */
+.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); }
+.grid-auto-fit-250 { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+.grid-auto-fit-300 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+.grid-auto-fit-350 { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); }
+
+.flex-center { display: flex; align-items: center; justify-content: center; }
+.flex-between { display: flex; align-items: center; justify-content: space-between; }
+
+.scrollable { overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--border) transparent; }
+.scrollable::-webkit-scrollbar { width: 8px; }
+.scrollable::-webkit-scrollbar-track { background: transparent; }
+.scrollable::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+.scrollable::-webkit-scrollbar-thumb:hover { background: var(--border-hover); }
+
+/* Glassmorphism Effects */
+.glass { 
+  background: rgba(255, 255, 255, 0.1); 
+  backdrop-filter: blur(10px); 
+  border: 1px solid rgba(255, 255, 255, 0.2); 
+}
+
+.glass-strong { 
+  background: rgba(255, 255, 255, 0.15); 
+  backdrop-filter: blur(20px); 
+  border: 1px solid rgba(255, 255, 255, 0.3); 
+}
+
+.backdrop-blur-sm { backdrop-filter: blur(4px); }
+.backdrop-blur { backdrop-filter: blur(8px); }
+.backdrop-blur-lg { backdrop-filter: blur(16px); }
+.backdrop-blur-xl { backdrop-filter: blur(24px); }
+
+/* Transform utilities */
+.transform { transform: translateZ(0); }
+.transition-transform { transition: transform 0.2s ease; }
+.hover\:scale-105:hover { transform: scale(1.05); }
+.hover\:scale-110:hover { transform: scale(1.1); }
+.-translate-y-1 { transform: translateY(-0.25rem); }
+.translate-x-1 { transform: translateX(0.25rem); }
+.-translate-x-1/2 { transform: translateX(-50%); }
+.-translate-y-1/2 { transform: translateY(-50%); }
+.rotate-45 { transform: rotate(45deg); }
+
+/* Additional spacing utilities */
+.gap-8 { gap: 2rem; }
+.p-8 { padding: 2rem; }
+.px-8 { padding-left: 2rem; padding-right: 2rem; }
+.py-8 { padding-top: 2rem; padding-bottom: 2rem; }
+.pt-24 { padding-top: 6rem; }
+
+/* Text utilities */
+.text-4xl { font-size: 2.25rem; line-height: 2.5rem; }
+.text-5xl { font-size: 3rem; line-height: 1; }
+.font-light { font-weight: 300; }
+
+/* Position utilities */
+.fixed { position: fixed; }
+.absolute { position: absolute; }
+.relative { position: relative; }
+.inset-0 { top: 0; right: 0; bottom: 0; left: 0; }
+.top-4 { top: 1rem; }
+.bottom-6 { bottom: 1.5rem; }
+.right-6 { right: 1.5rem; }
+.left-1\/2 { left: 50%; }
+.-top-2 { top: -0.5rem; }
+.-right-2 { right: -0.5rem; }
+
+/* Z-index utilities */
+.z-10 { z-index: 10; }
+.z-20 { z-index: 20; }
+.z-30 { z-index: 30; }
+.z-40 { z-index: 40; }
+.z-50 { z-index: 50; }
+
+/* Flex utilities */
+.flex-col { flex-direction: column; }
+.flex-1 { flex: 1 1 0%; }
+.flex-shrink-0 { flex-shrink: 0; }
+
+/* Additional Utility Classes */
+.filter { filter: var(--tw-filter); }
+.blur-3xl { --tw-blur: blur(64px); filter: var(--tw-blur); }
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+} 

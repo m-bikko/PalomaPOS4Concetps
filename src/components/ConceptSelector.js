@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { 
   Layout, Smartphone, BarChart3, Grid, 
   Clock, ArrowRight, Zap, Users, 
-  Layers, Activity, ShoppingCart
+  Layers, Activity, ShoppingCart, TerminalSquare, FolderTree, Sparkles
 } from 'lucide-react';
 
 const ConceptSelector = () => {
@@ -51,6 +51,39 @@ const ConceptSelector = () => {
       gradient: 'from-accent-secondary/20 to-warning/20',
       iconBg: 'bg-accent-secondary',
       accent: 'text-accent-secondary'
+    },
+    {
+      id: 'concept5',
+      title: 'Command Palette',
+      subtitle: 'Keyboard-Driven',
+      description: 'A keyboard-centric interface where all actions are performed through a powerful command palette. Ideal for power users.',
+      icon: TerminalSquare,
+      features: ['⌘K to open palette', 'Fuzzy search', 'Keyboard navigation', 'Minimalist UI'],
+      gradient: 'from-danger/20 to-warning/20',
+      iconBg: 'bg-danger',
+      accent: 'text-danger'
+    },
+    {
+      id: 'concept6',
+      title: 'Hierarchical View',
+      subtitle: 'Structured Navigation',
+      description: 'A structured, drill-down interface following a "Kitchen -> Category -> Product" flow with detailed views.',
+      icon: FolderTree,
+      features: ['Breadcrumb navigation', 'Product detail pages', 'Step-by-step ordering', 'Clear hierarchy'],
+      gradient: 'from-bg-primary to-bg-secondary',
+      iconBg: 'bg-gray-500',
+      accent: 'text-gray-400'
+    },
+    {
+      id: 'concept7',
+      title: 'Zen Interface',
+      subtitle: 'Minimalist & Gestural',
+      description: 'A zen-like floating interface with glassmorphism effects, gesture controls, and distraction-free design aesthetic.',
+      icon: Sparkles,
+      features: ['Glassmorphism UI', 'Swipe gestures', 'Floating elements', 'Backdrop blur effects'],
+      gradient: 'from-purple-500/20 to-blue-500/20',
+      iconBg: 'bg-purple-500',
+      accent: 'text-purple-400'
     }
   ];
 
@@ -150,7 +183,7 @@ const ConceptSelector = () => {
               Choose Your POS Experience
             </h1>
             <p className="text-xl text-secondary max-w-2xl mx-auto">
-              Explore four unique interface concepts, each designed for different workflows and user preferences.
+              Explore seven unique interface concepts, each designed for different workflows and user preferences.
             </p>
           </div>
           
@@ -179,8 +212,8 @@ const ConceptSelector = () => {
 
       {/* Concepts Grid */}
       <div className="flex-1 p-8 scrollable">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-2 gap-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-3 gap-8">
             {concepts.map((concept) => (
               <ConceptCard key={concept.id} concept={concept} />
             ))}
