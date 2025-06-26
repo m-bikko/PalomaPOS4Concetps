@@ -29,7 +29,6 @@ const ConceptFour = () => {
   } = usePOS();
 
   const [showSearch, setShowSearch] = useState(false);
-  const [selectedWidget, setSelectedWidget] = useState(null);
 
   const getProductImage = (product) => {
     if (product.image) {
@@ -56,9 +55,7 @@ const ConceptFour = () => {
 
   const Widget = ({ title, children, className = "", onClick }) => (
     <div 
-      className={`card hover:shadow-lg transition-all cursor-pointer ${className} ${
-        selectedWidget === title ? 'ring-2 ring-accent' : ''
-      }`}
+      className={`card hover:shadow-lg transition-all cursor-pointer ${className}`}
       onClick={() => onClick && onClick(title)}
     >
       <div className="p-6">
