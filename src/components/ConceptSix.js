@@ -123,12 +123,12 @@ const ConceptSix = () => {
 
           {view.type === 'productDetail' && selectedProduct && (
             <div className="flex gap-8">
-              <div className="w-1/3">
+              <div className="w-one-third">
                 <div className="product-image h-48 text-5xl mb-4">{getProductImage(selectedProduct)}</div>
                 <h2 className="text-2xl font-bold mb-2">{selectedProduct.name}</h2>
                 <p className="text-secondary mb-4">{selectedProduct.description}</p>
               </div>
-              <div className="w-2/3">
+              <div className="w-two-thirds">
                 <div className="space-y-6">
                   <div>
                     <h3 className="font-semibold text-lg mb-3 flex items-center gap-2"><Tag size={18}/>Pricing</h3>

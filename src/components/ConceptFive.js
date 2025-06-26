@@ -191,7 +191,7 @@ const ConceptFive = () => {
           <div className="w-full max-w-2xl bg-bg-card rounded-xl shadow-xl border border-border" onClick={(e) => e.stopPropagation()}>
             <div className="p-3 border-b border-border">
               <div className="relative">
-                <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-muted" />
+                <Search size={18} className="absolute left-4 top-half -translate-y-half text-muted" />
                 <input
                   ref={inputRef}
                   type="text"
@@ -204,7 +204,7 @@ const ConceptFive = () => {
                   }}
                   autoFocus
                 />
-                <button className="absolute right-4 top-1/2 -translate-y-1/2 text-muted hover:text-primary btn btn-sm" onClick={() => setShowPalette(false)}>
+                <button className="absolute right-4 top-half -translate-y-half text-muted hover:text-primary btn btn-sm" onClick={() => setShowPalette(false)}>
                   <X size={16} /> ESC
                 </button>
               </div>

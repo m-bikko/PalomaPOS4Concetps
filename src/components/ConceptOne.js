@@ -135,7 +135,7 @@ const ConceptOne = () => {
 
             {/* Enhanced Search */}
             <div className="flex-1 relative">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted" size={16} />
+              <Search className="absolute left-4 top-half transform -translate-y-half text-muted" size={16} />
               <input
                 type="text"
                 placeholder="Search products by name or description..."

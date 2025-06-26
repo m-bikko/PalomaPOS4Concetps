@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { usePOS } from '../hooks/usePOS';
 import { 
@@ -83,24 +83,24 @@ const ConceptSeven = () => {
     <div className="container h-full flex flex-col bg-gradient-to-br from-purple-900 via-bg-primary to-blue-900 relative overflow-hidden">
       {/* Animated Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-purple-500/20 rounded-full filter blur-3xl animate-float"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-500/20 rounded-full filter blur-3xl animate-float-delayed"></div>
+        <div className="absolute top-0 left-0 w-96 h-96 bg-purple-500-20 rounded-full filter blur-3xl animate-float"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-500-20 rounded-full filter blur-3xl animate-float-delayed"></div>
       </div>
 
       {/* Floating Header */}
-      <div className="absolute top-6 left-1/2 transform -translate-x-1/2 z-20 w-full max-w-xl">
+      <div className="absolute top-6 left-half transform -translate-x-half z-20 w-full max-w-xl">
         <div style={glassStyle} className="rounded-2xl px-8 py-4 mx-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <Link to="/" className="btn btn-sm bg-white/10 hover:bg-white/20 border-0 text-white">
+              <Link to="/" className="btn btn-sm bg-white-10 hover:bg-white-20 border-0 text-white">
                 <Home size={14} />
               </Link>
               <div>
                 <div className="text-xl font-light text-white">PalomaPOS</div>
-                <div className="text-xs text-white/70 font-mono">0.3.170.067234687234</div>
+                <div className="text-xs text-white-70 font-mono">0.3.170.067234687234</div>
               </div>
             </div>
-            <div className="flex items-center gap-3 text-white/70">
+            <div className="flex items-center gap-3 text-white-70">
               <div className="status-indicator status-online"></div>
               <div className="font-mono text-sm">{formatTime(currentTime)}</div>
             </div>
@@ -123,7 +123,7 @@ const ConceptSeven = () => {
           )}
         </button>
         <button 
-          className={`w-14 h-14 rounded-xl bg-white/10 backdrop-blur-lg shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110 ${showSearch ? 'rotate-45' : ''}`}
+          className={`w-14 h-14 rounded-xl bg-white-10 backdrop-blur-lg shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110 ${showSearch ? 'rotate-45' : ''}`}
           onClick={() => setShowSearch(!showSearch)}
           style={glassStyle}
         >
@@ -133,15 +133,15 @@ const ConceptSeven = () => {
 
       {/* Search Overlay */}
       {showSearch && (
-        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 flex items-center justify-center p-6 animate-fade-in">
+        <div className="fixed inset-0 bg-black-60 backdrop-blur-sm z-40 flex items-center justify-center p-6 animate-fade-in">
           <div className="w-full max-w-xl" style={glassStyle}>
             <div className="rounded-2xl p-8">
               <div className="relative mb-8">
-                <Search size={20} className="absolute left-4 top-1/2 -translate-y-1/2 text-white/70" />
+                <Search size={20} className="absolute left-4 top-half -translate-y-half text-white-70" />
                 <input
                   type="text"
                   placeholder="Search products..."
-                  className="w-full bg-white/5 border border-white/10 rounded-xl py-4 pl-12 pr-4 text-white placeholder-white/40 text-lg"
+                  className="w-full bg-white-5 border border-white-10 rounded-xl py-4 pl-12 pr-4 text-white placeholder-white-40 text-lg"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   autoFocus
@@ -154,7 +154,7 @@ const ConceptSeven = () => {
                     className={`px-6 py-3 rounded-xl text-sm transition-all duration-300 ${
                       selectedCategory === category.id 
                         ? 'bg-gradient-to-br from-purple-500 to-blue-500 text-white shadow-lg' 
-                        : 'bg-white/5 text-white hover:bg-white/10'
+                        : 'bg-white-5 text-white hover:bg-white-10'
                     }`}
                     onClick={() => setSelectedCategory(category.id)}
                   >
@@ -170,18 +170,18 @@ const ConceptSeven = () => {
 
       {/* Cart Sidebar */}
       {showCart && (
-        <div className="fixed right-0 top-0 h-full w-[480px] z-40 animate-slide-in-right" style={glassStyle}>
+        <div className="fixed right-0 top-0 h-full w-480 z-40 animate-slide-in-right" style={glassStyle}>
           <div className="flex flex-col h-full">
-            <div className="p-8 border-b border-white/10">
+            <div className="p-8 border-b border-white-10">
               <div className="flex items-center justify-between">
                 <h2 className="text-2xl font-light text-white">Your Order</h2>
-                <span className="text-white/70 text-lg">{cartTotals.itemCount} items</span>
+                <span className="text-white-70 text-lg">{cartTotals.itemCount} items</span>
               </div>
             </div>
             
             <div className="flex-1 p-8 overflow-y-auto">
               {cartItems.length === 0 ? (
-                <div className="text-center text-white/70 py-16">
+                <div className="text-center text-white-70 py-16">
                   <ShoppingCart size={64} className="mx-auto mb-6 opacity-50" />
                   <p className="text-xl font-light mb-2">Your cart is empty</p>
                   <p className="text-sm">Swipe right on products to add them</p>
@@ -195,19 +195,19 @@ const ConceptSeven = () => {
                     return (
                       <div 
                         key={cartItem.id} 
-                        className="group bg-white/5 rounded-2xl p-6 backdrop-blur-lg border border-white/10 transition-all duration-300 hover:bg-white/10"
+                        className="group bg-white-5 rounded-2xl p-6 backdrop-blur-lg border border-white-10 transition-all duration-300 hover:bg-white-10"
                         onTouchStart={handleSwipeStart}
                         onTouchEnd={(e) => handleCartItemSwipe('left', cartItem.id)}
                       >
                         <div className="flex items-center gap-4">
-                          <div className="w-16 h-16 bg-gradient-to-br from-purple-500/20 to-blue-500/20 rounded-xl flex items-center justify-center text-2xl font-bold text-white">
+                          <div className="w-16 h-16 bg-gradient-to-br from-purple-500-20 to-blue-500-20 rounded-xl flex items-center justify-center text-2xl font-bold text-white">
                             {getProductImage(details.product)}
                           </div>
                           <div className="flex-1">
                             <h4 className="text-lg font-medium text-white mb-1">{details.product.name}</h4>
-                            <p className="text-sm text-white/70">{formatCurrency(details.itemPrice)} each</p>
+                            <p className="text-sm text-white-70">{formatCurrency(details.itemPrice)} each</p>
                             {cartItem.note && (
-                              <p className="text-xs text-white/60 mt-2 italic">"{cartItem.note}"</p>
+                              <p className="text-xs text-white-60 mt-2 italic">"{cartItem.note}"</p>
                             )}
                           </div>
                           <div className="text-right">
@@ -215,14 +215,14 @@ const ConceptSeven = () => {
                             <div className="flex items-center gap-3">
                               <button 
                                 onClick={() => updateQuantity(cartItem.id, cartItem.quantity - 1)}
-                                className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-all"
+                                className="w-10 h-10 rounded-xl bg-white-10 flex items-center justify-center text-white hover:bg-white-20 transition-all"
                               >
                                 <Minus size={16} />
                               </button>
                               <span className="text-white font-medium w-8 text-center">{cartItem.quantity}</span>
                               <button 
                                 onClick={() => updateQuantity(cartItem.id, cartItem.quantity + 1)}
-                                className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-all"
+                                className="w-10 h-10 rounded-xl bg-white-10 flex items-center justify-center text-white hover:bg-white-20 transition-all"
                               >
                                 <Plus size={16} />
                               </button>
@@ -230,17 +230,17 @@ const ConceptSeven = () => {
                           </div>
                         </div>
                         
-                        <div className="flex gap-3 mt-4 pt-4 border-t border-white/5">
+                        <div className="flex gap-3 mt-4 pt-4 border-t border-white-5">
                           <button 
                             onClick={() => setEditingNote(cartItem.id)}
-                            className="flex-1 btn btn-sm bg-white/5 hover:bg-white/10 border-white/10 text-white rounded-xl"
+                            className="flex-1 btn btn-sm bg-white-5 hover:bg-white-10 border-white-10 text-white rounded-xl"
                           >
                             <StickyNote size={14} />
                             Add Note
                           </button>
                           <button 
                             onClick={() => setEditingDiscount(cartItem.id)}
-                            className="flex-1 btn btn-sm bg-white/5 hover:bg-white/10 border-white/10 text-white rounded-xl"
+                            className="flex-1 btn btn-sm bg-white-5 hover:bg-white-10 border-white-10 text-white rounded-xl"
                           >
                             <Percent size={14} />
                             Discount
@@ -254,13 +254,13 @@ const ConceptSeven = () => {
             </div>
             
             {cartItems.length > 0 && (
-              <div className="p-8 border-t border-white/10">
+              <div className="p-8 border-t border-white-10">
                 <div className="flex justify-between text-3xl font-light text-white mb-6">
                   <span>Total</span>
                   <span>{formatCurrency(cartTotals.total)}</span>
                 </div>
                 <div className="grid grid-cols-2 gap-4">
-                  <button className="btn bg-white/10 hover:bg-white/20 border-white/10 text-white rounded-xl py-4">
+                  <button className="btn bg-white-10 hover:bg-white-20 border-white-10 text-white rounded-xl py-4">
                     <Receipt size={20} />
                     Print Receipt
                   </button>
@@ -285,7 +285,7 @@ const ConceptSeven = () => {
               className={`px-8 py-4 rounded-xl transition-all duration-300 ${
                 selectedCategory === category.id
                   ? 'bg-gradient-to-br from-purple-500 to-blue-500 text-white shadow-lg scale-105'
-                  : 'bg-white/5 text-white hover:bg-white/10'
+                  : 'bg-white-5 text-white hover:bg-white-10'
               }`}
               onClick={() => setSelectedCategory(category.id)}
             >
@@ -309,7 +309,7 @@ const ConceptSeven = () => {
               style={glassStyle}
             >
               {/* Swipe Indicator */}
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-blue-500/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-500-20 to-blue-500-20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                 <div className="text-white flex items-center gap-2 text-lg font-light">
                   <ChevronRight size={24} />
                   <span>Swipe to add</span>
@@ -317,24 +317,24 @@ const ConceptSeven = () => {
               </div>
               
               <div className="relative z-10 p-8">
-                <div className="w-24 h-24 bg-gradient-to-br from-purple-500/20 to-blue-500/20 rounded-xl flex items-center justify-center text-4xl font-bold text-white mb-6 mx-auto transform transition-transform group-hover:scale-110 group-hover:rotate-3">
+                <div className="w-24 h-24 bg-gradient-to-br from-purple-500-20 to-blue-500-20 rounded-xl flex items-center justify-center text-4xl font-bold text-white mb-6 mx-auto transform transition-transform group-hover:scale-110 group-hover:rotate-3">
                   {getProductImage(product)}
                 </div>
                 
                 <h3 className="text-xl font-medium text-white text-center mb-2">{product.name}</h3>
-                <p className="text-sm text-white/70 text-center mb-6 line-clamp-2">{product.description}</p>
+                <p className="text-sm text-white-70 text-center mb-6 line-clamp-2">{product.description}</p>
                 
                 <div className="flex items-center justify-between mb-6">
                   <span className="text-2xl font-light text-white">{formatCurrency(product.price)}</span>
                   {!product.inStock && (
-                    <span className="text-sm bg-red-500/80 text-white px-3 py-1 rounded-lg">
+                    <span className="text-sm bg-red-500-80 text-white px-3 py-1 rounded-lg">
                       Out of Stock
                     </span>
                   )}
                 </div>
                 
                 {product.inStock && (
-                  <button className="w-full py-4 bg-white/10 hover:bg-white/20 rounded-xl text-white font-medium transition-all group-hover:bg-gradient-to-br group-hover:from-purple-500 group-hover:to-blue-500">
+                  <button className="w-full py-4 bg-white-10 hover:bg-white-20 rounded-xl text-white font-medium transition-all group-hover:bg-gradient-to-br group-hover:from-purple-500 group-hover:to-blue-500">
                     <Plus size={20} className="inline mr-2" />
                     Add to Cart
                   </button>
@@ -346,16 +346,16 @@ const ConceptSeven = () => {
       </div>
 
       {/* Quick Actions Bar */}
-      <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-20">
+      <div className="fixed bottom-8 left-half transform -translate-x-half z-20">
         <div style={glassStyle} className="rounded-2xl px-8 py-4">
           <div className="flex items-center gap-6">
-            <button className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-all">
+            <button className="w-12 h-12 rounded-xl bg-white-10 flex items-center justify-center text-white hover:bg-white-20 transition-all">
               <Scan size={20} />
             </button>
-            <button className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-all">
+            <button className="w-12 h-12 rounded-xl bg-white-10 flex items-center justify-center text-white hover:bg-white-20 transition-all">
               <Zap size={20} />
             </button>
-            <button className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-all">
+            <button className="w-12 h-12 rounded-xl bg-white-10 flex items-center justify-center text-white hover:bg-white-20 transition-all">
               <Settings size={20} />
             </button>
           </div>
@@ -364,11 +364,11 @@ const ConceptSeven = () => {
 
       {/* Edit Modals */}
       {editingNote && (
-        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-6 animate-fade-in">
+        <div className="fixed inset-0 bg-black-60 backdrop-blur-sm z-50 flex items-center justify-center p-6 animate-fade-in">
           <div style={glassStyle} className="w-full max-w-md rounded-2xl p-8">
             <h3 className="text-xl font-medium text-white mb-6">Add Note</h3>
             <textarea
-              className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder-white/40 resize-none text-lg"
+              className="w-full bg-white-5 border border-white-10 rounded-xl p-4 text-white placeholder-white-40 resize-none text-lg"
               rows="4"
               placeholder="Enter note..."
               defaultValue={cartItems.find(item => item.id === editingNote)?.note || ''}
@@ -383,12 +383,12 @@ const ConceptSeven = () => {
       )}
 
       {editingDiscount && (
-        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-6 animate-fade-in">
+        <div className="fixed inset-0 bg-black-60 backdrop-blur-sm z-50 flex items-center justify-center p-6 animate-fade-in">
           <div style={glassStyle} className="w-full max-w-md rounded-2xl p-8">
             <h3 className="text-xl font-medium text-white mb-6">Set Discount</h3>
             <input
               type="number"
-              className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder-white/40 text-lg"
+              className="w-full bg-white-5 border border-white-10 rounded-xl p-4 text-white placeholder-white-40 text-lg"
               placeholder="Discount %"
               min="0"
               max="100"

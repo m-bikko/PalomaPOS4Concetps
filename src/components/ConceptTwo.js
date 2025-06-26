@@ -10,7 +10,6 @@ import {
 const ConceptTwo = () => {
   const {
     categories,
-    products,
     cartItems,
     filteredProducts,
     allFilteredProducts,
@@ -97,7 +96,7 @@ const ConceptTwo = () => {
       <div className="p-6 bg-gradient-to-r from-bg-card to-bg-secondary border-b border-border">
         <div className="flex gap-4 items-center mb-4">
           <div className="flex-1 relative">
-            <Search className="absolute left-5 top-1/2 transform -translate-y-1/2 text-muted" size={20} />
+            <Search className="absolute left-5 top-half transform -translate-y-half text-muted" size={20} />
             <input
               type="text"
               placeholder="Search for products, categories, or descriptions..."
@@ -144,7 +143,7 @@ const ConceptTwo = () => {
       {/* Main Content - Enhanced Vertical Split */}
       <div className="flex-1 flex overflow-hidden">
         {/* Products Section - Left */}
-        <div className="w-2/3 p-6 border-r border-border">
+        <div className="w-two-thirds p-6 border-r border-border">
           <div className="h-full flex flex-col">
             <div className="flex justify-between items-center mb-6">
               <div>
@@ -209,7 +208,7 @@ const ConceptTwo = () => {
         </div>
 
         {/* Enhanced Cart Section - Right */}
-        <div className="w-1/3 flex flex-col bg-bg-card">
+        <div className="w-one-third flex flex-col bg-bg-card">
           {/* Enhanced Cart Header */}
           <div className="p-6 bg-gradient-to-r from-bg-secondary to-bg-tertiary border-b border-border">
             <div className="flex items-center justify-between mb-3">

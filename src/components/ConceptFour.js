@@ -137,7 +137,7 @@ const ConceptFour = () => {
         <div className="p-4 bg-gradient-to-r from-bg-card to-bg-secondary border-b border-border animate-fade-in">
           <div className="flex gap-4">
             <div className="flex-1 relative">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted" size={18} />
+              <Search className="absolute left-4 top-half transform -translate-y-half text-muted" size={18} />
               <input
                 type="text"
                 placeholder="Search products, analyze data, find insights..."

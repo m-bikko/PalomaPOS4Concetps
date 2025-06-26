@@ -137,7 +137,7 @@ const ConceptThree = () => {
       {showSearch && (
         <div className="p-4 bg-bg-card border-b border-border animate-fade-in">
           <div className="relative">
-            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted" size={18} />
+            <Search className="absolute left-4 top-half transform -translate-y-half text-muted" size={18} />
             <input
               type="text"
               placeholder="Search products, categories..."
@@ -148,7 +148,7 @@ const ConceptThree = () => {
             />
             {searchTerm && (
               <button 
-                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-muted hover:text-primary"
+                className="absolute right-4 top-half transform -translate-y-half text-muted hover:text-primary"
                 onClick={() => setSearchTerm('')}
               >
                 <X size={16} />
