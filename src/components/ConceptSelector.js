@@ -32,14 +32,14 @@ const ConceptSelector = () => {
     },
     {
       id: 'concept3',
-      title: 'Mobile-First',
+      title: 'Mobile-First Tabs',
       subtitle: 'Touch-Optimized',
-      description: 'Tab-based navigation designed for touch interfaces with mobile-friendly controls and responsive design.',
+      description: 'Separate Routes - Products & Cart pages with mobile navigation tabs and enhanced UX',
       icon: Smartphone,
       features: ['Touch-friendly tabs', 'Grid/list view toggle', 'Mobile overlay menu', 'Gesture support'],
-      gradient: 'from-warning/20 to-success/20',
-      iconBg: 'bg-warning',
-      accent: 'text-warning'
+      gradient: 'from-purple-500 to-pink-500',
+      iconBg: 'bg-purple-500',
+      accent: 'text-purple-400'
     },
     {
       id: 'concept4',
@@ -107,57 +107,61 @@ const ConceptSelector = () => {
     });
   };
 
-  const ConceptCard = ({ concept }) => (
-    <Link to={`/${concept.id}`} className="group block">
-      <div className={`card hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 bg-gradient-to-br ${concept.gradient} border border-border hover:border-accent/30`}>
-        <div className="p-8">
-          {/* Header */}
-          <div className="flex items-start justify-between mb-6">
-            <div className={`w-14 h-14 ${concept.iconBg} rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform`}>
-              <concept.icon size={24} className="text-white" />
-            </div>
-            <div className="flex items-center gap-2 text-sm text-secondary">
-              <Activity size={14} />
-              <span>Live Demo</span>
-            </div>
-          </div>
-
-          {/* Content */}
-          <div className="space-y-4">
-            <div>
-              <h3 className="text-xl font-bold mb-1">{concept.title}</h3>
-              <p className={`text-sm font-medium ${concept.accent} mb-3`}>{concept.subtitle}</p>
-              <p className="text-secondary leading-relaxed">{concept.description}</p>
-            </div>
-
-            {/* Features */}
-            <div className="space-y-3">
-              <h4 className="text-sm font-semibold text-secondary uppercase tracking-wide">Key Features</h4>
-              <div className="grid grid-2 gap-2">
-                {concept.features.map((feature, index) => (
-                  <div key={index} className="flex items-center gap-2 text-sm">
-                    <div className="w-1.5 h-1.5 bg-accent rounded-full flex-shrink-0"></div>
-                    <span className="text-secondary">{feature}</span>
-                  </div>
-                ))}
+  const ConceptCard = ({ concept }) => {
+    const route = concept.id === 'concept3' ? '/concept3-products' : `/${concept.id}`;
+    
+    return (
+      <Link to={route} className="group block">
+        <div className={`card hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 bg-gradient-to-br ${concept.gradient} border border-border hover:border-accent/30`}>
+          <div className="p-8">
+            {/* Header */}
+            <div className="flex items-start justify-between mb-6">
+              <div className={`w-14 h-14 ${concept.iconBg} rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform`}>
+                <concept.icon size={24} className="text-white" />
+              </div>
+              <div className="flex items-center gap-2 text-sm text-secondary">
+                <Activity size={14} />
+                <span>Live Demo</span>
               </div>
             </div>
 
-            {/* Action */}
-            <div className="pt-4 border-t border-border/50">
-              <div className="flex items-center justify-between">
-                <span className="text-sm font-medium">Try this concept</span>
-                <div className="flex items-center gap-2 text-accent group-hover:gap-3 transition-all">
-                  <span className="text-sm font-medium">Explore</span>
-                  <ArrowRight size={16} className="group-hover:transform group-hover:translate-x-1 transition-transform" />
+            {/* Content */}
+            <div className="space-y-4">
+              <div>
+                <h3 className="text-xl font-bold mb-1">{concept.title}</h3>
+                <p className={`text-sm font-medium ${concept.accent} mb-3`}>{concept.subtitle}</p>
+                <p className="text-secondary leading-relaxed">{concept.description}</p>
+              </div>
+
+              {/* Features */}
+              <div className="space-y-3">
+                <h4 className="text-sm font-semibold text-secondary uppercase tracking-wide">Key Features</h4>
+                <div className="grid grid-2 gap-2">
+                  {concept.features.map((feature, index) => (
+                    <div key={index} className="flex items-center gap-2 text-sm">
+                      <div className="w-1.5 h-1.5 bg-accent rounded-full flex-shrink-0"></div>
+                      <span className="text-secondary">{feature}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Action */}
+              <div className="pt-4 border-t border-border/50">
+                <div className="flex items-center justify-between">
+                  <span className="text-sm font-medium">Try this concept</span>
+                  <div className="flex items-center gap-2 text-accent group-hover:gap-3 transition-all">
+                    <span className="text-sm font-medium">Explore</span>
+                    <ArrowRight size={16} className="group-hover:transform group-hover:translate-x-1 transition-transform" />
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </Link>
-  );
+      </Link>
+    );
+  };
 
   return (
     <div className="container h-full flex flex-col">
